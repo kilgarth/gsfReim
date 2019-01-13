@@ -100,7 +100,7 @@ class Home extends CI_Controller {
 				}
 
 				$crestData = $cD['data'];
-				//Log the shit 
+				//Log the shit
 				$dti = array(
 				             "user"		=> $this->session->userdata('vars')['user'],
 				             "type"		=> "kill_submit",
@@ -135,7 +135,7 @@ class Home extends CI_Controller {
 							$overPtCap = 1;
 						}
 					}
-					
+
 					//Check to see if the kill exists
 					$dbchk = $this->db->where('killID', $crestData['killID'])->get('kills');
 					if($dbchk->num_rows() > 0){
@@ -527,7 +527,7 @@ class Home extends CI_Controller {
 						} else {
 							$alliance = "Unknown";
 						}
-						
+
 					}
 					if(isset($a['ship_type_id'])){
 						$shipData = $this->getItem($a['ship_type_id']);
@@ -536,7 +536,7 @@ class Home extends CI_Controller {
 						} else {
 							$shiptype = "Unknown";
 						}
-						
+
 					} else {
 						$shiptype = "Unknown";
 					}
@@ -546,7 +546,7 @@ class Home extends CI_Controller {
 							$character = $charData['name'];
 						} else {
 							$character = "Unknown";
-						}	
+						}
 					} else {
 						$character = 'Unknown '.$i;
 					}
@@ -616,7 +616,7 @@ class Home extends CI_Controller {
 	}
 
 	function getCharacter($charID) {
-		$data = $this->curllib->makeRequest('GET', sprintf('https://esi.tech.ccp.is/v3/characters/%s/?datasource=tranquility&language=en-us',$charID));
+		$data = $this->curllib->makeRequest('GET', sprintf('https://esi.evetech.net/v3/characters/%s/?datasource=tranquility&language=en-us',$charID));
 		$dataArray = json_decode($data, TRUE);
 		if(count($dataArray) > 0){
 			return $dataArray;
@@ -626,7 +626,7 @@ class Home extends CI_Controller {
 	}
 
 	function getCorporation($corpID) {
-		$data = $this->curllib->makeRequest('GET', sprintf('https://esi.tech.ccp.is/v4/corporations/%s/?datasource=tranquility&language=en-us',$corpID));
+		$data = $this->curllib->makeRequest('GET', sprintf('https://esi.evetech.net/v4/corporations/%s/?datasource=tranquility&language=en-us',$corpID));
 		$dataArray = json_decode($data, TRUE);
 		if(count($dataArray) > 0){
 			return $dataArray;
@@ -636,7 +636,7 @@ class Home extends CI_Controller {
 	}
 
 	function getAlliance($allianceID) {
-		$data = $this->curllib->makeRequest('GET', sprintf('https://esi.tech.ccp.is/v3/alliances/%s/?datasource=tranquility&language=en-us',$allianceID));
+		$data = $this->curllib->makeRequest('GET', sprintf('https://esi.evetech.net/v3/alliances/%s/?datasource=tranquility&language=en-us',$allianceID));
 		$dataArray = json_decode($data, TRUE);
 		if(count($dataArray) > 0){
 			return $dataArray;
